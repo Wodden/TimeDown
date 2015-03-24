@@ -26,7 +26,7 @@ namespace TimeDown {
           mi90m.Checked = false;
           mi120m.Checked = false;
           #endregion
-          notifyIcon1.ShowBalloonTip(15000, notifyIcon1.BalloonTipTitle, "Windows wird heruntergefahren.", ToolTipIcon.Info);
+          notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird heruntergefahren.", ToolTipIcon.Info);
           TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
         }
       }
