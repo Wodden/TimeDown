@@ -7,18 +7,24 @@ namespace TimeDown {
 
     public Form1() {
       InitializeComponent();
+      miCBAction.SelectedIndex = 0;
     }
 
-    private void miExit_Click( object sender, EventArgs e ) {
+    private void miExit_Click(object sender, EventArgs e) {
       Application.Exit();
     }
 
-    private void tTimer_Tick( object sender, EventArgs e ) {
-      if ( _iTimer > 0 ) {
+    private void tTimer_Tick(object sender, EventArgs e) {
+      if (_iTimer > 0) {
         _iTimer--;
-        if ( _iTimer == 900 ) {
+        if (_iTimer == 900) {
+          if (miCBAction.SelectedIndex == 0) {
+            notifyIcon1.BalloonTipText = "15 Minuten bis zum Herunterfahren.";
+          } else {
+            notifyIcon1.BalloonTipText = "15 Minuten bis zum neu starten.";
+          }
           notifyIcon1.ShowBalloonTip(60000);
-        } else if ( _iTimer == 0 ) {
+        } else if (_iTimer == 0) {
           #region Checked state
           miOff.Checked = true;
           mi30m.Checked = false;
@@ -27,14 +33,19 @@ namespace TimeDown {
           mi120m.Checked = false;
           miCustom.Checked = false;
           #endregion
-          notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird heruntergefahren.", ToolTipIcon.Info);
-          TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
+          if (miCBAction.SelectedIndex == 0) {
+            notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird heruntergefahren.", ToolTipIcon.Info);
+            TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
+          } else {
+            notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird neu gestartet.", ToolTipIcon.Info);
+            TimeDownExt.DoExitWin(TimeDownExt.EWX_REBOOT);
+          }
         }
       }
       notifyIcon1.Text = _iTimer + " Sekunden";
     }
 
-    private void miOff_Click( object sender, EventArgs e ) {
+    private void miOff_Click(object sender, EventArgs e) {
       #region Checked state
       miOff.Checked = true;
       mi30m.Checked = false;
@@ -47,7 +58,7 @@ namespace TimeDown {
       miCustom.Text = "Benutzerdefiniert";
     }
 
-    private void mi30m_Click( object sender, EventArgs e ) {
+    private void mi30m_Click(object sender, EventArgs e) {
       #region Checked state
       miOff.Checked = false;
       mi30m.Checked = true;
@@ -60,7 +71,7 @@ namespace TimeDown {
       miCustom.Text = "Benutzerdefiniert";
     }
 
-    private void mi60m_Click( object sender, EventArgs e ) {
+    private void mi60m_Click(object sender, EventArgs e) {
       #region Checked state
       miOff.Checked = false;
       mi30m.Checked = false;
@@ -73,7 +84,7 @@ namespace TimeDown {
       miCustom.Text = "Benutzerdefiniert";
     }
 
-    private void mi90m_Click( object sender, EventArgs e ) {
+    private void mi90m_Click(object sender, EventArgs e) {
       #region Checked state
       miOff.Checked = false;
       mi30m.Checked = false;
@@ -86,7 +97,7 @@ namespace TimeDown {
       miCustom.Text = "Benutzerdefiniert";
     }
 
-    private void mi120m_Click( object sender, EventArgs e ) {
+    private void mi120m_Click(object sender, EventArgs e) {
       #region Checked state
       miOff.Checked = false;
       mi30m.Checked = false;
@@ -105,16 +116,14 @@ namespace TimeDown {
         int irTimer = 0;
         try {
           irTimer = System.Convert.ToInt32(fTimeInput.tbDuration.Text);
-        }
-        catch {
+        } catch {
           irTimer = 0;
-          MessageBox.Show("Geben sie eine ganze Zahl ein!","TimeDown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          MessageBox.Show("Geben sie eine ganze Zahl ein!", "TimeDown", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         if (irTimer > 0) {
           if (fTimeInput.cbTimescale.SelectedIndex == 1) {
             irTimer = irTimer * 60;
-          }
-          else if (fTimeInput.cbTimescale.SelectedIndex == 2) {
+          } else if (fTimeInput.cbTimescale.SelectedIndex == 2) {
             irTimer = irTimer * 60 * 60;
           }
           #region Checked state

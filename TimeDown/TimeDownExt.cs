@@ -17,19 +17,19 @@ namespace TimeDown {
     internal static extern IntPtr GetCurrentProcess();
 
     [DllImport("advapi32.dll", ExactSpelling = true, SetLastError = true)]
-    internal static extern bool OpenProcessToken( IntPtr h, int acc, ref IntPtr
-    phtok );
+    internal static extern bool OpenProcessToken(IntPtr h, int acc, ref IntPtr
+    phtok);
 
     [DllImport("advapi32.dll", SetLastError = true)]
-    internal static extern bool LookupPrivilegeValue( string host, string name,
-    ref long pluid );
+    internal static extern bool LookupPrivilegeValue(string host, string name,
+    ref long pluid);
 
     [DllImport("advapi32.dll", ExactSpelling = true, SetLastError = true)]
-    internal static extern bool AdjustTokenPrivileges( IntPtr htok, bool disall,
-    ref TokPriv1Luid newst, int len, IntPtr prev, IntPtr relen );
+    internal static extern bool AdjustTokenPrivileges(IntPtr htok, bool disall,
+    ref TokPriv1Luid newst, int len, IntPtr prev, IntPtr relen);
 
     [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
-    internal static extern bool ExitWindowsEx( int flg, int rea );
+    internal static extern bool ExitWindowsEx(int flg, int rea);
 
     internal const int SE_PRIVILEGE_ENABLED = 0x00000002;
     internal const int TOKEN_QUERY = 0x00000008;
@@ -42,7 +42,7 @@ namespace TimeDown {
     internal const int EWX_POWEROFF = 0x00000008;
     internal const int EWX_FORCEIFHUNG = 0x00000010;
 
-    public static void DoExitWin( int flg ) {
+    public static void DoExitWin(int flg) {
       bool ok;
       TokPriv1Luid tp;
       IntPtr hproc = GetCurrentProcess();
