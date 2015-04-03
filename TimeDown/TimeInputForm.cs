@@ -11,6 +11,7 @@ namespace TimeDown {
   public partial class TimeInputForm : Form {
     public TimeInputForm() {
       InitializeComponent();
+      cbTimescale.SelectedIndex = 0;
     }
   }
 }

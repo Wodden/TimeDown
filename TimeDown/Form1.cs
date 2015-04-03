@@ -102,10 +102,20 @@ namespace TimeDown {
     private void miCustom_Click(object sender, EventArgs e) {
       TimeInputForm fTimeInput = new TimeInputForm();
       if (fTimeInput.ShowDialog(this) == DialogResult.OK) {
-        int irTimer = System.Convert.ToInt32(fTimeInput.tbDuration.Text);
+        int irTimer = 0;
+        try {
+          irTimer = System.Convert.ToInt32(fTimeInput.tbDuration.Text);
+        }
+        catch {
+          irTimer = 0;
+          MessageBox.Show("Geben sie eine ganze Zahl ein!","TimeDown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         if (irTimer > 0) {
           if (fTimeInput.cbTimescale.SelectedIndex == 1) {
             irTimer = irTimer * 60;
+          }
+          else if (fTimeInput.cbTimescale.SelectedIndex == 2) {
+            irTimer = irTimer * 60 * 60;
           }
           #region Checked state
           miOff.Checked = false;

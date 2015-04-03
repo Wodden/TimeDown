@@ -56,7 +56,8 @@
       this.cbTimescale.FormattingEnabled = true;
       this.cbTimescale.Items.AddRange(new object[] {
             "Sekunden",
-            "Minuten"});
+            "Minuten",
+            "Stunden"});
       this.cbTimescale.Location = new System.Drawing.Point(112, 24);
       this.cbTimescale.Name = "cbTimescale";
       this.cbTimescale.Size = new System.Drawing.Size(75, 21);
