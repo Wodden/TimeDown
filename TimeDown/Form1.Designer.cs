@@ -33,18 +33,20 @@
       this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
       this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.miCustom = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
       this.mi120m = new System.Windows.Forms.ToolStripMenuItem();
       this.mi90m = new System.Windows.Forms.ToolStripMenuItem();
       this.mi60m = new System.Windows.Forms.ToolStripMenuItem();
       this.mi30m = new System.Windows.Forms.ToolStripMenuItem();
       this.miOff = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.miCBAction = new System.Windows.Forms.ToolStripComboBox();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.miExit = new System.Windows.Forms.ToolStripMenuItem();
       this.tTimer = new System.Windows.Forms.Timer(this.components);
-      this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-      this.miCBAction = new System.Windows.Forms.ToolStripComboBox();
+      this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+      this.miSilent = new System.Windows.Forms.ToolStripMenuItem();
       this.contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -55,7 +57,7 @@
       this.notifyIcon1.BalloonTipTitle = "Aufbassen!";
       this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
       this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-      this.notifyIcon1.Text = "0 Sekunden";
+      this.notifyIcon1.Text = "Bereit";
       this.notifyIcon1.Visible = true;
       // 
       // contextMenuStrip1
@@ -73,7 +75,7 @@
             this.toolStripSeparator1,
             this.miExit});
       this.contextMenuStrip1.Name = "contextMenuStrip1";
-      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 220);
+      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 198);
       // 
       // miCustom
       // 
@@ -82,10 +84,10 @@
       this.miCustom.Text = "Benutzerdefiniert";
       this.miCustom.Click += new System.EventHandler(this.miCustom_Click);
       // 
-      // toolStripSeparator2
+      // toolStripSeparator3
       // 
-      this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+      this.toolStripSeparator3.Name = "toolStripSeparator3";
+      this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
       // 
       // mi120m
       // 
@@ -124,6 +126,30 @@
       this.miOff.Text = "Deaktiviert";
       this.miOff.Click += new System.EventHandler(this.miOff_Click);
       // 
+      // toolStripSeparator2
+      // 
+      this.toolStripSeparator2.Name = "toolStripSeparator2";
+      this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+      // 
+      // toolStripMenuItem1
+      // 
+      this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miCBAction,
+            this.toolStripSeparator4,
+            this.miSilent});
+      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+      this.toolStripMenuItem1.Text = "Optionen";
+      // 
+      // miCBAction
+      // 
+      this.miCBAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.miCBAction.Items.AddRange(new object[] {
+            "Herunterfahren",
+            "Neustarten"});
+      this.miCBAction.Name = "miCBAction";
+      this.miCBAction.Size = new System.Drawing.Size(121, 23);
+      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -142,27 +168,17 @@
       this.tTimer.Interval = 1000;
       this.tTimer.Tick += new System.EventHandler(this.tTimer_Tick);
       // 
-      // toolStripSeparator3
+      // toolStripSeparator4
       // 
-      this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
+      this.toolStripSeparator4.Name = "toolStripSeparator4";
+      this.toolStripSeparator4.Size = new System.Drawing.Size(178, 6);
       // 
-      // toolStripMenuItem1
+      // miSilent
       // 
-      this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miCBAction});
-      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
-      this.toolStripMenuItem1.Text = "Optionen";
-      // 
-      // miCBAction
-      // 
-      this.miCBAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.miCBAction.Items.AddRange(new object[] {
-            "Herunterfahren",
-            "Neustarten"});
-      this.miCBAction.Name = "miCBAction";
-      this.miCBAction.Size = new System.Drawing.Size(121, 23);
+      this.miSilent.Name = "miSilent";
+      this.miSilent.Size = new System.Drawing.Size(181, 22);
+      this.miSilent.Text = "Still";
+      this.miSilent.Click += new System.EventHandler(this.miSilent_Click);
       // 
       // Form1
       // 
@@ -195,6 +211,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         public System.Windows.Forms.ToolStripComboBox miCBAction;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem miSilent;
 
     }
 }

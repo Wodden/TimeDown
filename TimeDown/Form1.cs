@@ -4,26 +4,25 @@ using System.Windows.Forms;
 namespace TimeDown {
   public partial class Form1 : Form {
     private int _iTimer = 0;
+    private bool _bSilent = false;
 
     public Form1() {
       InitializeComponent();
       miCBAction.SelectedIndex = 0;
     }
 
-    private void miExit_Click(object sender, EventArgs e) {
-      Application.Exit();
-    }
-
     private void tTimer_Tick(object sender, EventArgs e) {
       if (_iTimer > 0) {
         _iTimer--;
         if (_iTimer == 900) {
-          if (miCBAction.SelectedIndex == 0) {
-            notifyIcon1.BalloonTipText = "15 Minuten bis zum Herunterfahren.";
-          } else {
-            notifyIcon1.BalloonTipText = "15 Minuten bis zum neu starten.";
+          if (_bSilent == false) {
+            if (miCBAction.SelectedIndex == 0) {
+              notifyIcon1.BalloonTipText = "15 Minuten bis zum Herunterfahren.";
+            } else {
+              notifyIcon1.BalloonTipText = "15 Minuten bis zum neu starten.";
+            }
+            notifyIcon1.ShowBalloonTip(60000);
           }
-          notifyIcon1.ShowBalloonTip(60000);
         } else if (_iTimer == 0) {
           #region Checked state
           miOff.Checked = true;
@@ -34,15 +33,17 @@ namespace TimeDown {
           miCustom.Checked = false;
           #endregion
           if (miCBAction.SelectedIndex == 0) {
-            notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird heruntergefahren.", ToolTipIcon.Info);
             TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
           } else {
-            notifyIcon1.ShowBalloonTip(10000, notifyIcon1.BalloonTipTitle, "Windows wird neu gestartet.", ToolTipIcon.Info);
             TimeDownExt.DoExitWin(TimeDownExt.EWX_REBOOT);
           }
         }
       }
-      notifyIcon1.Text = _iTimer + " Sekunden";
+      if (miOff.Checked == false) { notifyIcon1.Text = _iTimer + " Sekunden"; } else { notifyIcon1.Text = "Bereit"; }
+    }
+
+    private void miExit_Click(object sender, EventArgs e) {
+      Application.Exit();
     }
 
     private void miOff_Click(object sender, EventArgs e) {
@@ -139,6 +140,11 @@ namespace TimeDown {
         }
       }
       fTimeInput.Dispose();
+    }
+
+    private void miSilent_Click(object sender, EventArgs e) {
+      _bSilent = !_bSilent;
+      miSilent.Checked = _bSilent;
     }
   }
 }
