@@ -54,7 +54,7 @@
       // 
       this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
       this.notifyIcon1.BalloonTipText = "15 Minuten bis zum Herunterfahren! :0";
-      this.notifyIcon1.BalloonTipTitle = "Aufbassen!";
+      this.notifyIcon1.BalloonTipTitle = "Achtung!";
       this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
       this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
       this.notifyIcon1.Text = "Bereit";

@@ -21,6 +21,7 @@ namespace TimeDown {
             } else {
               notifyIcon1.BalloonTipText = "15 Minuten bis zum neu starten.";
             }
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
             notifyIcon1.ShowBalloonTip(60000);
           }
         } else if (_iTimer == 0) {
@@ -33,10 +34,13 @@ namespace TimeDown {
           miCustom.Checked = false;
           #endregion
           if (miCBAction.SelectedIndex == 0) {
+            notifyIcon1.BalloonTipText = "Windows wird heruntergefahren.";
             TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
           } else {
+            notifyIcon1.BalloonTipText = "Windows wird neu gestartet.";
             TimeDownExt.DoExitWin(TimeDownExt.EWX_REBOOT);
           }
+          if (_bSilent == false) { notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning; notifyIcon1.ShowBalloonTip(10000); }
         }
       }
       if (miOff.Checked == false) { notifyIcon1.Text = _iTimer + " Sekunden"; } else { notifyIcon1.Text = "Bereit"; }
