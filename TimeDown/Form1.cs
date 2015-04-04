@@ -17,15 +17,13 @@ namespace TimeDown {
         if (_iTimer == 900) {
           if (_bSilent == false) {
             if (miCBAction.SelectedIndex == 0) {
-              notifyIcon1.BalloonTipText = "15 Minuten bis zum Herunterfahren.";
+              notifyIcon1.ShowBalloonTip(60000, "TimeDown", "15 Minuten bis zum Herunterfahren.", ToolTipIcon.Warning);
             } else {
-              notifyIcon1.BalloonTipText = "15 Minuten bis zum neu starten.";
+              notifyIcon1.ShowBalloonTip(60000, "TimeDown", "15 Minuten bis zum neu starten.", ToolTipIcon.Warning);
             }
-            notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-            notifyIcon1.ShowBalloonTip(60000);
           }
         } else if (_iTimer == 0) {
-          #region Checked state
+          #region Auswahl aktualisieren
           miOff.Checked = true;
           mi30m.Checked = false;
           mi60m.Checked = false;
@@ -34,13 +32,12 @@ namespace TimeDown {
           miCustom.Checked = false;
           #endregion
           if (miCBAction.SelectedIndex == 0) {
-            notifyIcon1.BalloonTipText = "Windows wird heruntergefahren.";
+            if (_bSilent == false) { notifyIcon1.ShowBalloonTip(10000, "TimeDown", "Windows wird heruntergefahren.", ToolTipIcon.Info); };
             TimeDownExt.DoExitWin(TimeDownExt.EWX_SHUTDOWN);
           } else {
-            notifyIcon1.BalloonTipText = "Windows wird neu gestartet.";
+            if (_bSilent == false) { notifyIcon1.ShowBalloonTip(10000, "TimeDown", "Windows wird neu gestartet.", ToolTipIcon.Info); };
             TimeDownExt.DoExitWin(TimeDownExt.EWX_REBOOT);
           }
-          if (_bSilent == false) { notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning; notifyIcon1.ShowBalloonTip(10000); }
         }
       }
       if (miOff.Checked == false) { notifyIcon1.Text = _iTimer + " Sekunden"; } else { notifyIcon1.Text = "Bereit"; }
@@ -51,7 +48,7 @@ namespace TimeDown {
     }
 
     private void miOff_Click(object sender, EventArgs e) {
-      #region Checked state
+      #region Auswahl aktualisieren
       miOff.Checked = true;
       mi30m.Checked = false;
       mi60m.Checked = false;
@@ -64,7 +61,7 @@ namespace TimeDown {
     }
 
     private void mi30m_Click(object sender, EventArgs e) {
-      #region Checked state
+      #region Auswahl aktualisieren
       miOff.Checked = false;
       mi30m.Checked = true;
       mi60m.Checked = false;
@@ -77,7 +74,7 @@ namespace TimeDown {
     }
 
     private void mi60m_Click(object sender, EventArgs e) {
-      #region Checked state
+      #region Auswahl aktualisieren
       miOff.Checked = false;
       mi30m.Checked = false;
       mi60m.Checked = true;
@@ -90,7 +87,7 @@ namespace TimeDown {
     }
 
     private void mi90m_Click(object sender, EventArgs e) {
-      #region Checked state
+      #region Auswahl aktualisieren
       miOff.Checked = false;
       mi30m.Checked = false;
       mi60m.Checked = false;
@@ -103,7 +100,7 @@ namespace TimeDown {
     }
 
     private void mi120m_Click(object sender, EventArgs e) {
-      #region Checked state
+      #region Auswahl aktualisieren
       miOff.Checked = false;
       mi30m.Checked = false;
       mi60m.Checked = false;
@@ -131,7 +128,7 @@ namespace TimeDown {
           } else if (fTimeInput.cbTimescale.SelectedIndex == 2) {
             irTimer = irTimer * 60 * 60;
           }
-          #region Checked state
+          #region Auswahl aktualisieren
           miOff.Checked = false;
           mi30m.Checked = false;
           mi60m.Checked = false;
