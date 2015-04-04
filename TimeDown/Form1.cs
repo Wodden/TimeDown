@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows.Forms;
 
 namespace TimeDown {
   public partial class Form1 : Form {
     private int _iTimer = 0;
     private bool _bSilent = false;
+    private bool _bStartup = false;
 
     public Form1() {
       InitializeComponent();
       miCBAction.SelectedIndex = 0;
+      if ((string)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run", "TimeDown", "") != "") { miStartup.Checked = true; _bStartup = true; }
     }
 
     private void tTimer_Tick(object sender, EventArgs e) {
@@ -146,6 +149,24 @@ namespace TimeDown {
     private void miSilent_Click(object sender, EventArgs e) {
       _bSilent = !_bSilent;
       miSilent.Checked = _bSilent;
+    }
+
+    private void miStartup_Click(object sender, EventArgs e) {
+      _bStartup = !_bStartup;
+      miStartup.Checked = _bStartup;
+      if (_bStartup) {
+        try {
+          Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run", "TimeDown", string.Format("\"{0}\"", (string)Application.ExecutablePath));
+        } catch (Exception eRegWrite) {
+          throw new Exception(eRegWrite.Message, eRegWrite.InnerException);
+        }
+      } else {
+        try {
+          Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run", "TimeDown", "");
+        } catch (Exception eRegWrite) {
+          throw new Exception(eRegWrite.Message, eRegWrite.InnerException);
+        }
+      }
     }
   }
 }

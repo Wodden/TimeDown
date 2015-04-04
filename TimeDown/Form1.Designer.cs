@@ -42,11 +42,12 @@
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.miCBAction = new System.Windows.Forms.ToolStripComboBox();
+      this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+      this.miSilent = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.miExit = new System.Windows.Forms.ToolStripMenuItem();
       this.tTimer = new System.Windows.Forms.Timer(this.components);
-      this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-      this.miSilent = new System.Windows.Forms.ToolStripMenuItem();
+      this.miStartup = new System.Windows.Forms.ToolStripMenuItem();
       this.contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -75,7 +76,7 @@
             this.toolStripSeparator1,
             this.miExit});
       this.contextMenuStrip1.Name = "contextMenuStrip1";
-      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 198);
+      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 220);
       // 
       // miCustom
       // 
@@ -136,7 +137,8 @@
       this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miCBAction,
             this.toolStripSeparator4,
-            this.miSilent});
+            this.miSilent,
+            this.miStartup});
       this.toolStripMenuItem1.Name = "toolStripMenuItem1";
       this.toolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
       this.toolStripMenuItem1.Text = "Optionen";
@@ -149,6 +151,18 @@
             "Neustarten"});
       this.miCBAction.Name = "miCBAction";
       this.miCBAction.Size = new System.Drawing.Size(121, 23);
+      // 
+      // toolStripSeparator4
+      // 
+      this.toolStripSeparator4.Name = "toolStripSeparator4";
+      this.toolStripSeparator4.Size = new System.Drawing.Size(194, 6);
+      // 
+      // miSilent
+      // 
+      this.miSilent.Name = "miSilent";
+      this.miSilent.Size = new System.Drawing.Size(197, 22);
+      this.miSilent.Text = "Still";
+      this.miSilent.Click += new System.EventHandler(this.miSilent_Click);
       // 
       // toolStripSeparator1
       // 
@@ -168,17 +182,12 @@
       this.tTimer.Interval = 1000;
       this.tTimer.Tick += new System.EventHandler(this.tTimer_Tick);
       // 
-      // toolStripSeparator4
+      // miStartup
       // 
-      this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(178, 6);
-      // 
-      // miSilent
-      // 
-      this.miSilent.Name = "miSilent";
-      this.miSilent.Size = new System.Drawing.Size(181, 22);
-      this.miSilent.Text = "Still";
-      this.miSilent.Click += new System.EventHandler(this.miSilent_Click);
+      this.miStartup.Name = "miStartup";
+      this.miStartup.Size = new System.Drawing.Size(197, 22);
+      this.miStartup.Text = "Beim Systemstart laden";
+      this.miStartup.Click += new System.EventHandler(this.miStartup_Click);
       // 
       // Form1
       // 
@@ -213,6 +222,7 @@
         public System.Windows.Forms.ToolStripComboBox miCBAction;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem miSilent;
+        private System.Windows.Forms.ToolStripMenuItem miStartup;
 
     }
 }
