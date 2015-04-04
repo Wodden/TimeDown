@@ -1,33 +1,28 @@
-﻿namespace TimeDown
-{
-    partial class Form1
-    {
-        /// <summary>
-        /// Erforderliche Designervariable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+﻿namespace TimeDown {
+  partial class Form1 {
+    /// <summary>
+    /// Erforderliche Designervariable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Verwendete Ressourcen bereinigen.
-        /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+    /// <summary>
+    /// Verwendete Ressourcen bereinigen.
+    /// </summary>
+    /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+    protected override void Dispose(bool disposing) {
+      if (disposing && (components != null)) {
+        components.Dispose();
+      }
+      base.Dispose(disposing);
+    }
 
-        #region Vom Windows Form-Designer generierter Code
+    #region Vom Windows Form-Designer generierter Code
 
-        /// <summary>
-        /// Erforderliche Methode für die Designerunterstützung.
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-        /// </summary>
-        private void InitializeComponent()
-        {
+    /// <summary>
+    /// Erforderliche Methode für die Designerunterstützung.
+    /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+    /// </summary>
+    private void InitializeComponent() {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -44,10 +39,10 @@
       this.miCBAction = new System.Windows.Forms.ToolStripComboBox();
       this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
       this.miSilent = new System.Windows.Forms.ToolStripMenuItem();
+      this.miStartup = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.miExit = new System.Windows.Forms.ToolStripMenuItem();
       this.tTimer = new System.Windows.Forms.Timer(this.components);
-      this.miStartup = new System.Windows.Forms.ToolStripMenuItem();
       this.contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -76,7 +71,7 @@
             this.toolStripSeparator1,
             this.miExit});
       this.contextMenuStrip1.Name = "contextMenuStrip1";
-      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 220);
+      this.contextMenuStrip1.Size = new System.Drawing.Size(165, 198);
       // 
       // miCustom
       // 
@@ -164,6 +159,13 @@
       this.miSilent.Text = "Still";
       this.miSilent.Click += new System.EventHandler(this.miSilent_Click);
       // 
+      // miStartup
+      // 
+      this.miStartup.Name = "miStartup";
+      this.miStartup.Size = new System.Drawing.Size(197, 22);
+      this.miStartup.Text = "Beim Systemstart laden";
+      this.miStartup.Click += new System.EventHandler(this.miStartup_Click);
+      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -182,13 +184,6 @@
       this.tTimer.Interval = 1000;
       this.tTimer.Tick += new System.EventHandler(this.tTimer_Tick);
       // 
-      // miStartup
-      // 
-      this.miStartup.Name = "miStartup";
-      this.miStartup.Size = new System.Drawing.Size(197, 22);
-      this.miStartup.Text = "Beim Systemstart laden";
-      this.miStartup.Click += new System.EventHandler(this.miStartup_Click);
-      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,29 +196,29 @@
       this.contextMenuStrip1.ResumeLayout(false);
       this.ResumeLayout(false);
 
-        }
-
-        #endregion
-
-        public System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem mi120m;
-        private System.Windows.Forms.ToolStripMenuItem mi90m;
-        private System.Windows.Forms.ToolStripMenuItem mi60m;
-        private System.Windows.Forms.ToolStripMenuItem mi30m;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem miOff;
-        public System.Windows.Forms.Timer tTimer;
-        private System.Windows.Forms.ToolStripMenuItem miExit;
-        private System.Windows.Forms.ToolStripMenuItem miCustom;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        public System.Windows.Forms.ToolStripComboBox miCBAction;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem miSilent;
-        private System.Windows.Forms.ToolStripMenuItem miStartup;
-
     }
+
+    #endregion
+
+    public System.Windows.Forms.NotifyIcon notifyIcon1;
+    private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+    private System.Windows.Forms.ToolStripMenuItem mi120m;
+    private System.Windows.Forms.ToolStripMenuItem mi90m;
+    private System.Windows.Forms.ToolStripMenuItem mi60m;
+    private System.Windows.Forms.ToolStripMenuItem mi30m;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+    private System.Windows.Forms.ToolStripMenuItem miOff;
+    public System.Windows.Forms.Timer tTimer;
+    private System.Windows.Forms.ToolStripMenuItem miExit;
+    private System.Windows.Forms.ToolStripMenuItem miCustom;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+    public System.Windows.Forms.ToolStripComboBox miCBAction;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+    private System.Windows.Forms.ToolStripMenuItem miSilent;
+    private System.Windows.Forms.ToolStripMenuItem miStartup;
+
+  }
 }
 

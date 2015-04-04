@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeDown", "TimeDown\TimeDown.csproj", "{FC5DE9BF-1D84-4DDE-8D97-31C0FDC7A6A9}"
 EndProject
 Global
@@ -13,6 +15,7 @@ Global
 		{FC5DE9BF-1D84-4DDE-8D97-31C0FDC7A6A9}.Debug|x86.Build.0 = Debug|x86
 		{FC5DE9BF-1D84-4DDE-8D97-31C0FDC7A6A9}.Release|x86.ActiveCfg = Release|x86
 		{FC5DE9BF-1D84-4DDE-8D97-31C0FDC7A6A9}.Release|x86.Build.0 = Release|x86
+		{FC5DE9BF-1D84-4DDE-8D97-31C0FDC7A6A9}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

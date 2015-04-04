@@ -11,7 +11,7 @@ namespace TimeDown {
     public Form1() {
       InitializeComponent();
       miCBAction.SelectedIndex = 0;
-      if ((string)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run", "TimeDown", "") != "") { miStartup.Checked = true; _bStartup = true; }
+      if (String.IsNullOrEmpty((string)Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run", "TimeDown", ""))) { miStartup.Checked = true; _bStartup = true; }
     }
 
     private void tTimer_Tick(object sender, EventArgs e) {
@@ -20,7 +20,7 @@ namespace TimeDown {
         if (_iTimer == 900) {
           if (_bSilent == false) {
             if (miCBAction.SelectedIndex == 0) {
-              notifyIcon1.ShowBalloonTip(60000, "TimeDown", "15 Minuten bis zum Herunterfahren.", ToolTipIcon.Warning);
+              notifyIcon1.ShowBalloonTip(60000, "TimeDown", "15 Minuten bis zum herunterfahren.", ToolTipIcon.Warning);
             } else {
               notifyIcon1.ShowBalloonTip(60000, "TimeDown", "15 Minuten bis zum neu starten.", ToolTipIcon.Warning);
             }
@@ -43,7 +43,7 @@ namespace TimeDown {
           }
         }
       }
-      if (miOff.Checked == false) { notifyIcon1.Text = _iTimer + " Sekunden"; } else { notifyIcon1.Text = "Bereit"; }
+      if (miOff.Checked == false) { notifyIcon1.Text = String.Format("{0} Sekunden bis zum herunterfahren.", _iTimer); } else { notifyIcon1.Text = "Bereit"; }
     }
 
     private void miExit_Click(object sender, EventArgs e) {
@@ -123,7 +123,7 @@ namespace TimeDown {
           irTimer = System.Convert.ToInt32(fTimeInput.tbDuration.Text);
         } catch {
           irTimer = 0;
-          MessageBox.Show("Geben sie eine ganze Zahl ein!", "TimeDown", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          MessageBox.Show("Geben sie eine Ganze Zahl an!", "TimeDown", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         if (irTimer > 0) {
           if (fTimeInput.cbTimescale.SelectedIndex == 1) {
@@ -140,7 +140,7 @@ namespace TimeDown {
           miCustom.Checked = true;
           #endregion
           _iTimer = irTimer;
-          miCustom.Text = _iTimer + " Sekunden";
+          miCustom.Text = String.Format("{0} Sekunden", _iTimer);
         }
       }
       fTimeInput.Dispose();

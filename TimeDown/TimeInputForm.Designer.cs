@@ -97,7 +97,7 @@
       this.Controls.Add(this.label1);
       this.Controls.Add(this.tbDuration);
       this.Name = "TimeInputForm";
-      this.Text = "TimeInputForm";
+      this.Text = "TimeDown";
       this.ResumeLayout(false);
       this.PerformLayout();
 
